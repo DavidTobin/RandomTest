@@ -61,12 +61,11 @@ var RandomTest = function(fn, options) {
   // The dreaded loop
   for (; i < LOOP_COUNT; i++) {
     // Get our random number between ranges
-    rand = fn({min: MIN, max: MAX}) || ~~(((((Math.random() + Math.random() + Math.random()) / 3) * (MAX - (MIN - 1))) % (MAX + 1)) + MIN);  
+    rand = fn({min: MIN, max: MAX}) || ~~(((Math.random() * (MAX - (MIN - 1))) % (MAX + 1)) + MIN);  
 
     // Break on out of range number
     if (rand < MIN || rand > MAX) {
-      console.error('Out of range number detected. Please alter your function.');
-      break;
+      console.error('Out of range number detected. Please alter your function.');      
     }
 
     // Add to the counter of the 'random' number in this loop
